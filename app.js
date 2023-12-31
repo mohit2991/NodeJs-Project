@@ -11,7 +11,15 @@ app.use(
   })
 );
 
-app.use("/api", router);
+app.use("/", router);
+
+router.get("/", (req, res) => {
+  res.json({ message: "Welcome!" });
+});
+
+router.get("/api", (req, res) => {
+  res.json({ message: "Welcome!" });
+});
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

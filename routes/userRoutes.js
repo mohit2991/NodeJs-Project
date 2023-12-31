@@ -3,12 +3,8 @@ const router = express.Router();
 
 const db = require("./../config/db");
 
-router.get("/", (req, res) => {
-  res.json({ message: "Welcome!" });
-});
-
 // Example route for fetching all users
-router.get("/users", (req, res) => {
+router.get("/api/users", (req, res) => {
   db.query("SELECT * FROM users", (err, results) => {
     if (err) {
       console.error("Error fetching users:", err);
@@ -20,7 +16,7 @@ router.get("/users", (req, res) => {
 });
 
 // Example route for creating a new user
-router.post("/users", (req, res) => {
+router.post("/api/user", (req, res) => {
   const { username, email } = req.body;
   db.query(
     "INSERT INTO users (name, email, password) VALUES (?, ?,?)",
